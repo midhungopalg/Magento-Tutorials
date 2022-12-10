@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @package Midhun_CustomProductList
+ * @author Midhun
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="page.main.title">
+            <action method="setPageTitle">
+                <argument translate="true" name="title" xsi:type="string">Custom Product Listing Page</argument>
+            </action>
+        </referenceBlock>
+        <referenceBlock name="catalog.compare.sidebar" remove="true"/> 
+        <referenceBlock name="wishlist_sidebar" remove="true" />
+    </body>
+</page>
