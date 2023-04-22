@@ -1,0 +1,14 @@
+{
+  "name": "blueelevation/rsingle-product-title",
+  "description": "Pagebuilder SingleProductTile module",
+  "type": "magento2-module",
+  "version": "1.0.0",
+  "autoload": {
+    "files": [
+      "registration.php"
+    ],
+    "psr-4": {
+      "Blueelevation\\SingleProductTile\\": ""
+    }
+  }
+}

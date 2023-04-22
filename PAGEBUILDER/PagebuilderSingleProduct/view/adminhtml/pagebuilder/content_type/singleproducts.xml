@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @package Midhun_PagebuilderSingleProduct
+ * @author Midhun
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_PageBuilder:etc/content_type.xsd">
+    <type name="singleproducts"
+          label="Single Products Content"
+          component="Magento_PageBuilder/js/content-type"
+          preview_component="Midhun_PagebuilderSingleProduct/js/content-type/single-product/preview"
+          form="pagebuilder_singleproducts_form"
+          menu_section="add_content"
+          icon="icon-pagebuilder-products"
+          sortOrder="20"
+          translate="label">
+        <children default_policy="deny"/>
+        <appearances>
+            <appearance default="true"
+                        name="default"
+                        preview_template="Midhun_PagebuilderSingleProduct/content-type/single-product/default/preview"
+                        master_template="Midhun_PagebuilderSingleProduct/content-type/single-product/default/master"
+                        reader="Magento_PageBuilder/js/master-format/read/configurable">
+                <elements>
+                    <element name="main">
+                        <attribute source="productSku" name="productSku"/>
+                        <attribute source="data-content-type" name="name"/>
+                        <attribute source="data-appearance" name="appearance"/>
+                        <html name="html" preview_converter="Magento_PageBuilder/js/converter/attribute/preview/store-id"/>
+                    </element>
+                </elements>
+                <converters>
+                <converter component="Midhun_PagebuilderSingleProduct/js/content-type/single-product/mass-converter/widget-directive" name="widget_directive">
+                        <config>
+                            <item name="html_variable" value="html"/>
+                        </config>
+                    </converter>
+                </converters>
+            </appearance>
+        </appearances>
+    </type>
+</config>

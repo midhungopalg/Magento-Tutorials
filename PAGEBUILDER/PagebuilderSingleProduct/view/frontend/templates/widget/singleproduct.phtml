@@ -1,0 +1,61 @@
+<?php
+$product = $block->getProductData();
+/* @var \Magento\Framework\Escaper $escaper */
+
+use Magento\Framework\App\Action\Action;
+?>
+<?php if ($product->isSaleable()):?>
+    <?php $postParams = $block->getAddToCartPostParams($product); ?>
+    <form data-role="tocart-form"
+            data-product-sku="<?= $escaper->escapeHtml($product->getSku()) ?>"
+            action="<?= $escaper->escapeUrl($postParams['action']) ?>"
+            method="post">
+    <div>
+        <div style="display:flex;">
+            <div>
+                <a href="<?= $product->getProductUrl() ?>">
+                    <img src="<?= $block->productImageUrl($product->getImage()) ?>" alt="<?= $product->getName() ?>" width="200px;"/>
+                </a>
+            </div>
+            <h1>
+                <a href="<?= $product->getProductUrl() ?>">
+                    <?= $product->getName() ?>
+                </a>
+            </h1>
+        </div>
+        <div>
+        <p><?= $product->getDescription() ?></p>
+        <input type="hidden"
+                name="product"
+                value="<?= /* @noEscape */ $postParams['data']['product'] ?>">
+        <input type="hidden"
+                name="<?= /* @noEscape */ Action::PARAM_NAME_URL_ENCODED ?>"
+                value="<?=
+                /* @noEscape */ $postParams['data'][Action::PARAM_NAME_URL_ENCODED]
+                ?>">
+        <?= $block->getBlockHtml('formkey') ?>
+        <button type="submit"
+                title="<?= $escaper->escapeHtmlAttr(__('Add to Cart')) ?>"
+                class="action tocart primary"
+                >
+            <span><?= $escaper->escapeHtml(__('Add to Cart')) ?></span>
+        </button>
+        <?php if ($product->getSpecialPrice()): ?>
+            <span style='text-decoration:line-through'>
+                <?= $block->getFormatedPrice($product->getPrice()) ?>
+            </span>
+            <span><?= $block->getFormatedPrice($product->getSpecialPrice()) ?></span>
+        <?php else: ?>
+            <?php
+                if (!$product->getPrice()) {
+                    $price = $product->getData('price');
+                } else {
+                    $price = $product->getPrice();
+                }
+             ?>
+            <span><?= $block->getFormatedPrice($price) ?></span>
+        <?php endif; ?>
+        </div>
+    </div>
+    </form>
+<?php endif; ?>

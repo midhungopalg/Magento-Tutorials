@@ -1,0 +1,25 @@
+<?xml version="1.0" ?>
+<!--
+/**
+ * @package Midhun_PagebuilderSingleProduct
+ * @author Midhun
+ */
+-->
+<widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Widget:etc/widget.xsd">
+    <widget class="Midhun\PagebuilderSingleProduct\Block\Widget\SingleProductWidget" id="midhun_singleproduct_widget">
+        <label>Single Product Widget</label>
+        <description>Single product widget</description>
+        <parameters>
+            <parameter name="widget_product_id" xsi:type="block" visible="true" required="true" sort_order="10">
+                <label translate="true">Product</label>
+                <block class="Magento\Catalog\Block\Adminhtml\Product\Widget\Chooser">
+                    <data>
+                        <item name="button" xsi:type="array">
+                            <item name="open" xsi:type="string" translate="true">Select Product...</item>
+                        </item>
+                    </data>
+                </block>
+            </parameter>
+        </parameters>
+    </widget>
+</widgets>
