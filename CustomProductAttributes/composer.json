@@ -1,0 +1,14 @@
+{
+  "name": "midhun/custom-product-attributes",
+  "description": "Custom Product attributes",
+  "type": "magento2-module",
+  "version": "1.0.0",
+  "autoload": {
+    "files": [
+      "registration.php"
+    ],
+    "psr-4": {
+      "Midhun\\CustomProductAttributes\\": ""
+    }
+  }
+}
